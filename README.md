@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pOmelchenko/gi-test.svg?branch=master)](https://travis-ci.org/pOmelchenko/gi-test)
+
 # Задание
 Есть текстовый файл, в который пишутся какие-то данные, построчно.
 Числа, символы, буквы что угодно.  
