@@ -1,0 +1,38 @@
+#! /usr/local/bin/php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Reader\Commands\CountDigit;
+use Reader\Reader;
+use Reader\Storage\ArrayStorage;
+use Reader\Storage\SqliteStorage;
+use Symfony\Component\Console\Application;
+
+$application = new Application();
+
+$application->add(
+    new CountDigit(
+        'get-statistic/via-array',
+        'Read file and return statistic about digits use <info>array</info> for that',
+        new Reader(new ArrayStorage())
+    )
+);
+
+$application->add(
+    new CountDigit(
+        'get-statistic/via-sqlite-in-memory',
+        'Read file and return statistic about digits use <info>sqlite in memory</info> for that',
+        new Reader(new SqliteStorage())
+    )
+);
+
+$application->add(
+    new CountDigit(
+        'get-statistic/via-sqlite-in-file',
+        'Read file and return statistic about digits use <info>sqlite in file</info> for that',
+        new Reader(new SqliteStorage('/tmp/storage.db'))
+    )
+);
+
+$application->run();
